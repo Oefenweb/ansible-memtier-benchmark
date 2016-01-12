@@ -1,6 +1,6 @@
 # vars file for memtier-benchmark
 ---
-memtier-benchmark_dependencies:
+memtier_benchmark_dependencies:
   - git-core
   - build-essential
   - autoconf
