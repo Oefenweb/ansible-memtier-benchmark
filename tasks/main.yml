@@ -29,6 +29,7 @@
     repo: https://github.com/RedisLabs/memtier_benchmark.git
     dest: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
     version: "{{ memtier_benchmark_version }}"
+  register: result
   tags:
     - configuration
     - memtier-benchmark
@@ -39,7 +40,6 @@
 #  args:
 #    chdir: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
 #    creates: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark-{{ memtier-benchmark_version }}_{{ ansible_machine }}.deb"
-#  register: result
 #  tags:
 #    - configuration
 #    - memtier-benchmark
