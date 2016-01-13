@@ -36,14 +36,13 @@
     - memtier-benchmark-checkout
 
 - name: build and install
-  command: "{{ item }}"
+  shell: >
+    autoreconf -ivf && \
+    ./configure && \
+    make && \
+    make install
   args:
     chdir: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
-  with_items:
-    - autoreconf -ivf
-    - ./configure
-    - make
-    - make install
   when: git_checkout | changed
   tags:
     - configuration
