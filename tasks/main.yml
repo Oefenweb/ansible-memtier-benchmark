@@ -28,7 +28,7 @@
   git:
     repo: https://github.com/RedisLabs/memtier_benchmark.git
     dest: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
-    version: "{{ memtier-benchmark_version }}"
+    version: "{{ memtier_benchmark_version }}"
   tags:
     - configuration
     - memtier-benchmark
