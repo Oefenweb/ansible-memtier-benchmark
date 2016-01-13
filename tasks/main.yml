@@ -29,35 +29,32 @@
     repo: https://github.com/RedisLabs/memtier_benchmark.git
     dest: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
     version: "{{ memtier_benchmark_version }}"
-  register: result
+  register: git_checkout
   tags:
     - configuration
     - memtier-benchmark
     - memtier-benchmark-checkout
 
-#- name: build deb file
-#  shell: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark/mkdeb.sh && mv /var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark/memtier-benchmark-{{ memtier-benchmark_version }}_{{ ansible_machine }}.deb /var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark-{{ memtier-benchmark_version }}_{{ ansible_machine }}.deb"
-#  args:
-#    chdir: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
-#    creates: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark-{{ memtier-benchmark_version }}_{{ ansible_machine }}.deb"
-#  tags:
-#    - configuration
-#    - memtier-benchmark
-#    - memtier-benchmark-build-deb
-#
-#- name: install deb file
-#  apt:
-#    deb: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark-{{ memtier-benchmark_version }}_{{ ansible_machine }}.deb"
-#  tags:
-#    - configuration
-#    - memtier-benchmark
-#    - memtier-benchmark-install-deb
+- name: build and install
+  command: "{{ item }}"
+  args:
+    chdir: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
+  with_items:
+    - autoreconf -ivf
+    - ./configure
+    - make
+    - make install
+  when: git_checkout | changed
+  tags:
+    - configuration
+    - memtier-benchmark
+    - memtier-benchmark-build-and-install
 
 - name: cleanup build
   shell: "git reset --hard && git clean -d -x -f"
   args:
     chdir: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
-  when: result | changed
+  when: git_checkout | changed
   tags:
     - configuration
     - memtier-benchmark
