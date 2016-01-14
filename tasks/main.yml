@@ -1,0 +1,56 @@
+# tasks file for memtier-benchmark
+---
+- name: install dependencies
+  apt:
+    name: "{{ item }}"
+    state: latest
+    update_cache: true
+    cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
+  with_items: memtier_benchmark_dependencies
+  tags:
+    - configuration
+    - memtier-benchmark
+    - memtier-benchmark-dependencies
+
+- name: create (checkout) directory
+  file:
+    path: /var/lib/ansible/memtier-benchmark/checkouts
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
+  tags:
+    - configuration
+    - memtier-benchmark
+    - memtier-benchmark-checkout
+
+- name: checkout repository
+  git:
+    repo: https://github.com/RedisLabs/memtier_benchmark.git
+    dest: "{{ memtier_benchmark_checkout_path }}"
+    version: "{{ memtier_benchmark_version }}"
+  register: git_checkout
+  tags:
+    - configuration
+    - memtier-benchmark
+    - memtier-benchmark-checkout
+
+- name: build and install
+  shell: autoreconf -ivf && ./configure && make && make install
+  args:
+    chdir: "{{ memtier_benchmark_checkout_path }}"
+  when: git_checkout | changed
+  tags:
+    - configuration
+    - memtier-benchmark
+    - memtier-benchmark-build-and-install
+
+- name: cleanup build
+  shell: "git reset --hard && git clean -d -x -f"
+  args:
+    chdir: "{{ memtier_benchmark_checkout_path }}"
+  when: git_checkout | changed
+  tags:
+    - configuration
+    - memtier-benchmark
+    - memtier-benchmark-cleanup-build

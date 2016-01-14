@@ -1,0 +1,6 @@
+# test file for memtier-benchmark
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - ../../

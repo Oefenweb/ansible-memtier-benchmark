@@ -1,0 +1,13 @@
+# vars file for memtier-benchmark
+---
+memtier_benchmark_dependencies:
+  - git-core
+  - build-essential
+  - autoconf
+  - automake
+  - libpcre3-dev
+  - libevent-dev
+  - pkg-config
+  - zlib1g-dev
+
+memtier_benchmark_checkout_path: /var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark
