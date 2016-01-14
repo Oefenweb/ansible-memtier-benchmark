@@ -36,13 +36,7 @@
     - memtier-benchmark-checkout
 
 - name: build and install
-  # chdir does not work in all versions for some reason
-  shell: >
-    cd {{ memtier_benchmark_checkout_path }} && \
-    autoreconf -ivf && \
-    ./configure && \
-    make && \
-    make install
+  shell: autoreconf -ivf && ./configure && make && make install
   args:
     chdir: "{{ memtier_benchmark_checkout_path }}"
   when: git_checkout | changed
