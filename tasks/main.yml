@@ -36,8 +36,8 @@
     - memtier-benchmark-checkout
 
 - name: build and install
+  # chdir does not work in all versions for some reason
   shell: >
-    # chdir does not work in all versions for some reason
     cd {{ memtier_benchmark_checkout_path }} && \
     autoreconf -ivf && \
     ./configure && \
