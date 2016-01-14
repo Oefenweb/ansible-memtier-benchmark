@@ -9,3 +9,5 @@ memtier_benchmark_dependencies:
   - libevent-dev
   - pkg-config
   - zlib1g-dev
+
+memtier_benchmark_checkout_path: /var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark

@@ -27,7 +27,7 @@
 - name: checkout repository
   git:
     repo: https://github.com/RedisLabs/memtier_benchmark.git
-    dest: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
+    dest: "{{ memtier_benchmark_checkout_path }}"
     version: "{{ memtier_benchmark_version }}"
   register: git_checkout
   tags:
@@ -37,12 +37,14 @@
 
 - name: build and install
   shell: >
+    # chdir does not work in all versions for some reason
+    cd {{ memtier_benchmark_checkout_path }} && \
     autoreconf -ivf && \
     ./configure && \
     make && \
     make install
   args:
-    chdir: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
+    chdir: "{{ memtier_benchmark_checkout_path }}"
   when: git_checkout | changed
   tags:
     - configuration
@@ -52,7 +54,7 @@
 - name: cleanup build
   shell: "git reset --hard && git clean -d -x -f"
   args:
-    chdir: "/var/lib/ansible/memtier-benchmark/checkouts/memtier-benchmark"
+    chdir: "{{ memtier_benchmark_checkout_path }}"
   when: git_checkout | changed
   tags:
     - configuration
