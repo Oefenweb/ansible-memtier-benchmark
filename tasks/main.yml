@@ -29,6 +29,7 @@
     repo: https://github.com/RedisLabs/memtier_benchmark.git
     dest: "{{ memtier_benchmark_checkout_path }}"
     version: "{{ memtier_benchmark_version }}"
+    force: true
   register: git_checkout
   tags:
     - configuration
