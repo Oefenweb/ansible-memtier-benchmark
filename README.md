@@ -17,7 +17,7 @@ Set up [memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark) (A Hi
 
 #### Variables
 
-* `memtier_benchmark_version` [default: `1.2.10`]: What version of memtier-benchmark to check out (set up). This can be the full 40-character SHA-1 hash, the literal string HEAD, a branch name, or a tag name
+* `memtier_benchmark_version` [default: `1.2.11`]: What version of memtier-benchmark to check out (set up). This can be the full 40-character SHA-1 hash, the literal string HEAD, a branch name, or a tag name
 
 ## Dependencies
 
