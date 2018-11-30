@@ -40,7 +40,7 @@
   shell: autoreconf -ivf && ./configure && make && make install
   args:
     chdir: "{{ memtier_benchmark_checkout_path }}"
-  when: _git_checkout | changed
+  when: _git_checkout is changed
   tags:
     - configuration
     - memtier-benchmark
@@ -50,7 +50,7 @@
   shell: git reset --hard && git clean -d -x -f
   args:
     chdir: "{{ memtier_benchmark_checkout_path }}"
-  when: _git_checkout | changed
+  when: _git_checkout is changed
   tags:
     - configuration
     - memtier-benchmark
