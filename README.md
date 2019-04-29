@@ -1,6 +1,7 @@
 ## memtier-benchmark
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-memtier-benchmark.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-memtier-benchmark) [![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-memtier--benchmark-blue.svg)](https://galaxy.ansible.com/Oefenweb/memtier-benchmark)
+[![Build Status](https://travis-ci.org/Oefenweb/ansible-memtier-benchmark.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-memtier-benchmark)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-memtier--benchmark-blue.svg)](https://galaxy.ansible.com/Oefenweb/memtier-benchmark)
 
 Set up [memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark) (A High-Throughput Benchmarking Tool for Redis & Memcached) in Debian-like systems.
 
@@ -17,7 +18,7 @@ Set up [memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark) (A Hi
 
 #### Variables
 
-* `memtier_benchmark_version` [default: `1.2.15`]: What version of memtier-benchmark to check out (set up). This can be the full 40-character SHA-1 hash, the literal string HEAD, a branch name, or a tag name
+* `memtier_benchmark_version` [default: `1.2.16`]: What version of memtier-benchmark to check out (set up). This can be the full 40-character SHA-1 hash, the literal string HEAD, a branch name, or a tag name
 
 ## Dependencies
 
