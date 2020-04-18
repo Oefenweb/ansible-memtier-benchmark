@@ -1,6 +1,7 @@
 # meta file for memtier-benchmark
 ---
 galaxy_info:
+  role_name: memtier-benchmark
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.
   description: Set up memtier_benchmark in Debian-like systems
