@@ -2,11 +2,10 @@
 ---
 - name: install dependencies
   apt:
-    name: "{{ item }}"
+    name: "{{ memtier_benchmark_dependencies }}"
     state: "{{ apt_install_state | default('latest') }}"
     update_cache: true
     cache_valid_time: "{{ apt_update_cache_valid_time | default(3600) }}"
-  with_items: "{{ memtier_benchmark_dependencies }}"
   tags:
     - configuration
     - memtier-benchmark
@@ -37,7 +36,8 @@
     - memtier-benchmark-checkout
 
 - name: build and install
-  shell: autoreconf -ivf && ./configure && make && make install
+  shell: >
+    autoreconf -ivf && ./configure && make && make install
   args:
     chdir: "{{ memtier_benchmark_checkout_path }}"
   when: _git_checkout is changed
@@ -47,7 +47,8 @@
     - memtier-benchmark-build-and-install
 
 - name: cleanup build
-  shell: git reset --hard && git clean -d -x -f
+  shell: >
+    git reset --hard && git clean -d -x -f
   args:
     chdir: "{{ memtier_benchmark_checkout_path }}"
   when: _git_checkout is changed
