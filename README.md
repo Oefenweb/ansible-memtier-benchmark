@@ -7,7 +7,7 @@ Set up [memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark) (A Hi
 
 #### Requirements
 
-* `git-core` (will be installed)
+* `git` (will be installed)
 * `build-essential` (will be installed)
 * `autoconf` (will be installed)
 * `automake` (will be installed)
