@@ -1,12 +1,13 @@
 # vars file
 ---
 memtier_benchmark_dependencies:
-  - git
-  - build-essential
   - autoconf
   - automake
-  - libpcre3-dev
+  - build-essential
+  - git
   - libevent-dev
+  - libpcre3-dev
+  - libssl-dev
   - pkg-config
   - zlib1g-dev
 

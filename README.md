@@ -7,12 +7,13 @@ Set up [memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark) (A Hi
 
 #### Requirements
 
-* `git` (will be installed)
-* `build-essential` (will be installed)
 * `autoconf` (will be installed)
 * `automake` (will be installed)
-* `libpcre3-dev` (will be installed)
+* `build-essential` (will be installed)
+* `git` (will be installed)
 * `libevent-dev` (will be installed)
+* `libpcre3-dev` (will be installed)
+* `libssl-dev` (will be installed)
 * `pkg-config` (will be installed)
 * `zlib1g-dev` (will be installed)
 
