@@ -2,7 +2,7 @@
 ---
 galaxy_info:
   namespace: oefenweb
-  role_name: memtier-benchmark
+  role_name: memtier_benchmark
   author: Mischa ter Smitten
   company: Oefenweb.nl B.V.
   description: Set up memtier_benchmark in Debian-like systems
@@ -11,13 +11,11 @@ galaxy_info:
   platforms:
     - name: Ubuntu
       versions:
-        - precise
-        - trusty
         - xenial
         - bionic
+        - focal
     - name: Debian
       versions:
-        - wheezy
         - jessie
         - stretch
         - buster
