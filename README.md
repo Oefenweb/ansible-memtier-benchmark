@@ -1,7 +1,7 @@
 ## memtier-benchmark
 
-[![Build Status](https://travis-ci.org/Oefenweb/ansible-memtier-benchmark.svg?branch=master)](https://travis-ci.org/Oefenweb/ansible-memtier-benchmark)
-[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-memtier--benchmark-blue.svg)](https://galaxy.ansible.com/Oefenweb/memtier-benchmark)
+[![CI](https://github.com/Oefenweb/ansible-megacli/workflows/CI/badge.svg)](https://github.com/Oefenweb/ansible-megacli/actions?query=workflow%3ACI)
+[![Ansible Galaxy](http://img.shields.io/badge/ansible--galaxy-memtier--benchmark-blue.svg)](https://galaxy.ansible.com/Oefenweb/memtier_benchmark)
 
 Set up [memtier_benchmark](https://github.com/RedisLabs/memtier_benchmark) (A High-Throughput Benchmarking Tool for Redis & Memcached) in Debian-like systems.
 
