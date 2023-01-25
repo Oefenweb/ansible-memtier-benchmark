@@ -1,7 +1,7 @@
 # tasks file
 ---
-- name: install dependencies
-  apt:
+- name: install dependencies  # noqa args[module]
+  ansible.builtin.apt:
     name: "{{ memtier_benchmark_dependencies }}"
     state: "{{ apt_install_state | default('latest') }}"
     update_cache: true
@@ -12,7 +12,7 @@
     - memtier-benchmark-dependencies
 
 - name: create (checkout) directory
-  file:
+  ansible.builtin.file:
     path: /var/lib/ansible/memtier-benchmark/checkouts
     state: directory
     owner: root
@@ -24,7 +24,7 @@
     - memtier-benchmark-checkout
 
 - name: checkout repository
-  git:
+  ansible.builtin.git:
     repo: https://github.com/RedisLabs/memtier_benchmark.git
     dest: "{{ memtier_benchmark_checkout_path }}"
     version: "{{ memtier_benchmark_version }}"
@@ -36,7 +36,7 @@
     - memtier-benchmark-checkout
 
 - name: build and install
-  shell: >
+  ansible.builtin.shell: >
     autoreconf -ivf && ./configure && make && make install
   args:
     chdir: "{{ memtier_benchmark_checkout_path }}"
@@ -47,7 +47,7 @@
     - memtier-benchmark-build-and-install
 
 - name: cleanup build
-  shell: >
+  ansible.builtin.shell: >
     git reset --hard && git clean -d -x -f
   args:
     chdir: "{{ memtier_benchmark_checkout_path }}"
