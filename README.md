@@ -31,7 +31,7 @@ None
 ---
 - hosts: all
   roles:
-    - memtier-benchmark
+    - oefenweb.memtier-benchmark
 ```
 
 #### License
